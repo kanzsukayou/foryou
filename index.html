@@ -1,113 +1,157 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buat Karin</title>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fec3a6 100%);
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        overflow: hidden;
-    }
-    .card {
-        background: white;
-        border-radius: 25px;
-        padding: 45px 35px;
-        max-width: 520px;
-        text-align: center;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        animation: fadeIn 1s ease;
-        position: relative;
-        z-index: 2;
-    }
-    h1 {
-        color: #e91e63;
-        font-size: 1.8em;
-        margin-bottom: 20px;
-    }
-    .message {
-        color: #444;
-        font-size: 17px;
-        line-height: 1.9;
-        margin-bottom: 25px;
-    }
-    .emoji {
-        font-size: 45px;
-        margin-bottom: 15px;
-        animation: bounce 2s infinite;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-    .hearts {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1;
-    }
-    .heart {
-        position: absolute;
-        color: rgba(255, 255, 255, 0.7);
-        animation: float 6s infinite ease-in;
-        font-size: 20px;
-    }
-    @keyframes float {
-        0% { transform: translateY(100vh) scale(0); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning Karin ✨</title>
+    <style>
+        /* Pengaturan Dasar & Tema Gelap Cantik */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle, #1a101e 0%, #0a060d 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Wadah Pesan Utama */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 192, 203, 0.15);
+            padding: 40px 30px;
+            border-radius: 24px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 
+                        0 0 30px rgba(255, 105, 180, 0.05);
+            z-index: 10;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Ikon Mahkota di Atas */
+        .crown {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Judul */
+        h1 {
+            color: #ffb7ce;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(255, 183, 206, 0.3);
+        }
+
+        /* Isi Pesan */
+        p {
+            color: #e0d4e3;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-align: justify;
+            text-justify: inter-word;
+            margin-bottom: 10px;
+        }
+
+        /* Animasi Munculnya Kartu */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animasi Mengapung untuk Mahkota */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- Animasi Hati (Latar Belakang) --- */
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.6);
+            pointer-events: none;
+            font-size: 14px; /* Ukuran hati kecil-kecil */
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="hearts" id="hearts"></div>
 
-<div class="card">
-    <div class="emoji">🌅👑</div>
-    <h1>Hai My Princess Karin</h1>
-    <div class="message">
-        udh pagi bangun jangan bobo terus, 
-        kalo udh bangun jangan lupa mandi sarapan 
-        sama kabarin i ya, 
-        
-        oya kenapa i kirim nya malam karna pasti pas u bangun 
-        i masih tidur jadi i kirim nya malam aja
+    <div class="card">
+        <div class="crown">👑</div>
+        <h1>Good Morning, Princess</h1>
+        <p>
+            good morning my princess karin, bangunnn jangan bobo terus, kalo udh bangun langsung mandi abis mandi sarapan sama jangan lupa kabarin i ya, oya kenapa i kirim nya malam soal kalo pagi pasti u dulu an yg bangun i belum bangun, ya udh si itu doang
+        </p>
     </div>
-</div>
 
-<script>
-// Animasi hati jatuh
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '♡';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-    document.getElementById('hearts').appendChild(heart);
-    
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}
-setInterval(createHeart, 400);
-</script>
+    <script>
+        // Membuat efek hati kecil yang terus berjatuhan secara acak
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            
+            // Menggunakan karakter emoji hati berukuran kecil
+            heart.innerHTML = '❤'; 
+            
+            // Posisi horizontal acak di seluruh layar
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Kecepatan jatuh acak antara 4 sampai 8 detik
+            const duration = Math.random() * 4 + 4;
+            heart.style.animationDuration = duration + 's';
+            
+            // Ukuran bervariasi sedikit agar terlihat natural (antara 10px - 18px)
+            const size = Math.random() * 8 + 10;
+            heart.style.fontSize = size + 'px';
+            
+            // Efek blur halus acak untuk memberikan kesan kedalaman ruang (3D depth)
+            const blurVal = Math.random() > 0.7 ? 'blur(1px)' : 'none';
+            heart.style.filter = blurVal;
+            
+            document.body.appendChild(heart);
+
+            // Hapus elemen setelah animasi selesai agar tidak membebani browser
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Jalankan fungsi pembuat hati setiap 300 milidetik
+        setInterval(createHeart, 300);
+    </script>
 </body>
 </html>
